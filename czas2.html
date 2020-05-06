@@ -1,0 +1,104 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>JavaScript</title>
+</head>
+<body>
+<script type="text/javascript">
+function data_ok()
+{
+data = new Date();
+miesiac = data.getMonth();
+dzien_tyg = data.getDay();
+data_lokalna = data.toLocaleDateString();
+czas_lokalny = data.toLocaleTimeString();
+switch(dzien_tyg)
+{
+	case 0:
+		dzien_tyg_slownie = "Niedziela";
+	break;
+	case 1:
+		dzien_tyg_slownie = "Poniedziałek";
+	break;
+	case 2:
+		dzien_tyg_slownie = "Wtorek";
+	break;
+	case 3:
+		dzien_tyg_slownie = "Środa";
+	break;
+	case 4:
+		dzien_tyg_slownie = "Czwartek";
+	break;
+	case 5:
+		dzien_tyg_slownie = "Piątek";
+	break;
+	case 6:
+		dzien_tyg_slownie = "Sobota";
+	break;
+}
+
+dlugosc = data_lokalna.length;
+switch(miesiac)
+	{
+		case 0:
+			miesiac_slownie = " stycznia ";
+		break;
+		case 1:
+			miesiac_slownie = " lutego ";
+		break;
+		case 2:
+			miesiac_slownie = " marca ";
+		break;
+		case 3:
+			miesiac_slownie = " kwietnia ";
+		break;
+		case 4:
+			miesiac_slownie = " maja ";
+		break;
+		case 5:
+			miesiac_slownie = " czerwca ";
+		break;
+		case 6:
+			miesiac_slownie = " lipca ";
+		break;
+		case 7:
+			miesiac_slownie = " sierpnia ";
+		break;
+		case 8:
+			miesiac_slownie = " września ";
+		break;
+		case 9:
+			miesiac_slownie = " października ";
+		break;
+		case 10:
+			miesiac_slownie = " listopada ";
+		break;
+		case 11:
+			miesiac_slownie = " grudnia ";
+		break;
+	}
+if(dlugosc == 10)
+{
+	pocz = data_lokalna.substr(0,2);
+	kon = data_lokalna.substr(6);
+	op5 = pocz + miesiac_slownie + kon;
+}
+else if(dlugosc == 9)
+{
+	pocz = data_lokalna.substr(0,1);
+	kon = data_lokalna.substr(5);
+	op5 = pocz + miesiac_slownie + kon;
+}
+
+var dobra_data = "<b> Dzisiejszy dzień to:<br />" + dzien_tyg_slownie + ", " + op5 + " roku, <br />" + "Godzina: " + czas_lokalny + "</b>";
+
+
+	document.getElementById("czas").innerHTML = dobra_data;
+	setTimeout("data_ok()",1000);
+}
+</script>
+<h3 id="czas"></h3>
+<script>data_ok()</script>
+</body>
+</html>
